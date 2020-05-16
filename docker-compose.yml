@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  app:
+    image: vfusion_daemon:vfusion_daemon
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    volumes:
+      - ./vfusion_daemon:/opt
+      - app_node_modules:/opt/node_modules
+    environment:
+      NODE_ENV: development
+      ESL_HOST: fs
+    networks:
+      main:
+        aliases:
+          - app
+  
+  freeswitch:
+    image: freeswitch:vfusion_daemon
+    build:
+      context: .
+      dockerfile: Dockerfile.freeswitch
+    networks:
+      main:
+        aliases: 
+          - fs
+
+networks:
+ main:
+
+volumes:
+  app_node_modules:
