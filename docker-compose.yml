@@ -22,6 +22,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.freeswitch
+    ports: 
+      - "5060:5060/udp"
     networks:
       main:
         aliases: 
