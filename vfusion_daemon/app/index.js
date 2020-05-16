@@ -22,4 +22,4 @@ freeswitch.on('esl::event::CUSTOM::**', function(e) {
 		console.log("CHANNEL_ANSWER " + JSON.stringify(headers));
     });
 
-console.log(new Date(), 'VFusion Daemon started');
+console.log(new Date(), 'VFusion daemon started');
