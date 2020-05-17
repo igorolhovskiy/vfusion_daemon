@@ -11,26 +11,26 @@ services:
       - app_node_modules:/opt/node_modules
     environment:
       NODE_ENV: development
-      ESL_HOST: fs
-    networks:
-      main:
-        aliases:
-          - app
+    network_mode: host
+#    networks:
+#      main:
+#        aliases:
+#          - app
   
-  freeswitch:
-    image: freeswitch:vfusion_daemon
-    build:
-      context: .
-      dockerfile: Dockerfile.freeswitch
-    ports: 
-      - "5060:5060/udp"
-    networks:
-      main:
-        aliases: 
-          - fs
+#  freeswitch:
+#    image: freeswitch:vfusion_daemon
+#    build:
+#      context: .
+#      dockerfile: Dockerfile.freeswitch
+#    ports: 
+#      - "5060:5060/udp"
+#    networks:
+#      main:
+#        aliases: 
+#          - fs
 
-networks:
- main:
+#networks:
+# main:
 
 volumes:
   app_node_modules:
