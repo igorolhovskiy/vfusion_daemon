@@ -32,4 +32,4 @@ freeswitch
         log("CHANNEL_ANSWER " + JSON.stringify(headers));
 });
 
-log(new Date(), 'VFusion daemon started');
+log('VFusion daemon started');

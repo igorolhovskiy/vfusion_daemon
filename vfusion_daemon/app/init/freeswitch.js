@@ -25,7 +25,7 @@ function createConnection() {
     conn.socket.on('close', reconnect);
 
     conn.on('error', (err) => {
-        log('%s FreeSwitch error: %s', new Date(), err);
+        log('FreeSwitch error:', err);
         reconnect();
     });
 
