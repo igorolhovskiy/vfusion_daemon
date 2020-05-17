@@ -31,7 +31,7 @@ function createConnection() {
 
     conn.on('esl::ready', () => {
         conn.subscribe(options.subscription, () => {
-            log('Freeswitch and subscriptions are ready');
+            log('FreeSwitch and subscriptions are ready');
         });
     });
 
