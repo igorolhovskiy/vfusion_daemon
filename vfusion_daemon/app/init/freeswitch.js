@@ -1,6 +1,7 @@
 const esl = require('modesl'),
       options = require('../config/freeswitch'),
-      toArray = require('lodash/toArray');
+      toArray = require('lodash/toArray'),
+      log = require('../init/logger')(module);
 
 let events = [],
     conn = createConnection();
@@ -24,13 +25,13 @@ function createConnection() {
     conn.socket.on('close', reconnect);
 
     conn.on('error', (err) => {
-        console.error('%s FreeSwitch error: %s', new Date(), err);
+        log('%s FreeSwitch error: %s', new Date(), err);
         reconnect();
     });
 
     conn.on('esl::ready', () => {
         conn.subscribe(options.subscription, () => {
-            console.log('Freeswitch and subscriptions are ready');
+            log('Freeswitch and subscriptions are ready');
         });
     });
 
@@ -47,7 +48,7 @@ function reconnect() {
     }
 
     reconnect.timer = setTimeout( () => {
-        console.log('Reconnecting FreeSwitch');
+        log('Reconnecting FreeSwitch');
         conn = createConnection();
     }, options.reconnect_seconds * 1000);
 }
