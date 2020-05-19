@@ -17,6 +17,19 @@ services:
         aliases:
           - app
   
+  http:
+    image: mock_http_server:vfusion_daemon
+    build:
+      context: .
+      dockerfile: Dockerfile.mock
+    volumes:
+      - ./mock_http_server:/opt
+      - mock_node_modules:/opt/node_modules
+    networks:
+      main:
+        aliases:
+          - http
+  
   freeswitch:
     image: freeswitch:vfusion_daemon
     build:
@@ -34,3 +47,4 @@ networks:
 
 volumes:
   app_node_modules:
+  mock_node_modules:
