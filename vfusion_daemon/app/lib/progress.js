@@ -9,7 +9,7 @@ let progress = (headers) => {
         return;
     }
 
-    let vtiger_url_buff = new Buffer(headers['variable_vtiger_url'], 'base64');
+    let vtiger_url_buff = new Buffer.from(headers['variable_vtiger_url'], 'base64');
     let vtiger_url = vtiger_url_buff.toString('ascii');
 
     let requestBody = {
@@ -21,7 +21,7 @@ let progress = (headers) => {
 
     // Add vtigersignature
     if (typeof(headers['variable_vtiger_api_key']) !== 'undefined') {
-        let vtiger_api_key_buff = new Buffer(headers['variable_vtiger_api_key'], 'base64');
+        let vtiger_api_key_buff = new Buffer.from(headers['variable_vtiger_api_key'], 'base64');
         requestBody['vtigersignature'] = vtiger_api_key_buff.toString('ascii');
     }
 
