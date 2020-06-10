@@ -3,5 +3,5 @@ module.exports = {
     port: (typeof process.env.ESL_PORT === 'undefined') ? 8021 : process.env.ESL_PORT,
     password: (typeof process.env.ESL_PASSWORD === 'undefined') ? 'ClueCon' : process.env.ESL_PASSWORD,
     reconnect_seconds: 3,
-    subscription: ['CHANNEL_ORIGINATE', 'CHANNEL_CREATE', 'CHANNEL_ANSWER', 'CHANNEL_HANGUP', 'CHANNEL_PROGRESS' ,'CHANNEL_BRIDGE']
+    subscription: ['CHANNEL_ORIGINATE', 'CHANNEL_CREATE', 'CHANNEL_ANSWER', 'CHANNEL_HANGUP', 'CHANNEL_PROGRESS' ,'CHANNEL_BRIDGE', 'CHANNEL_DESTROY']
 };
