@@ -15,7 +15,7 @@ let bridge = (headers) => {
     let requestBody = {
         'callstatus' : 'call_answered',
         'timestamp' : headers['Event-Date-Timestamp'],
-        'uuid': headers['Bridge-B-Unique-ID'],
+        'uuid': headers['variable_vtiger_call_uuid'] || headers['variable_call_uuid'],
         'number': headers['variable_dialed_user']
     }
 

@@ -15,7 +15,7 @@ let progress = (headers) => {
     let requestBody = {
         'callstatus' : 'call_ringing',
         'timestamp' : headers['Event-Date-Timestamp'],
-        'uuid': headers['variable_uuid'],
+        'uuid': headers['variable_vtiger_call_uuid'] || headers['variable_call_uuid'],
         'number': headers['variable_dialed_user']
     }
 

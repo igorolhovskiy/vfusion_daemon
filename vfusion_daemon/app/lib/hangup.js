@@ -5,7 +5,7 @@ let hangup = (headers) => {
     let requestBody = {
         'callstatus' : 'call_end',
         'timestamp' : headers['Event-Date-Timestamp'],
-        'uuid': headers['variable_uuid'],
+        'uuid': headers['variable_vtiger_call_uuid'] || headers['variable_call_uuid'],
         'direction': headers['Call-Direction'],
     }
 
