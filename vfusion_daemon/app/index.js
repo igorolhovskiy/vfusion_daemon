@@ -2,8 +2,8 @@ const freeswitch = require('./init/freeswitch'),
     headersProcess = require('./init/fsheadersprocess'),
     log = require('./init/logger')(module),
     callRinging = require('./lib/progress'),
-    callAnswer = require('./lib/bridge'),
-    callHangup = require('./lib/hangup');
+    callAnswer = require('./lib/bridge');
+    //callHangup = require('./lib/hangup');
 
 freeswitch
     // .on('esl::event::CUSTOM::**', function(e) {

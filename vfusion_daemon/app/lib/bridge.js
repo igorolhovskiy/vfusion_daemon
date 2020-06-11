@@ -1,5 +1,7 @@
 const log = require('../init/logger')(module),
-    request = require('urllib');
+    request = require('urllib'),
+    commonBody = require('../lib/common');
+
 
 let bridge = (headers) => {
 
@@ -12,21 +14,10 @@ let bridge = (headers) => {
     let vtiger_url_buff = new Buffer.from(headers['variable_vtiger_url'], 'base64');
     let vtiger_url = vtiger_url_buff.toString('ascii');
 
-    let event_timestamp = headers['Event-Date-Timestamp'];
-    event_timestamp = event_timestamp.substring(0, event_timestamp.length - 6);
+    let requestBody = commonBody(headers);
 
-    let requestBody = {
-        'callstatus' : 'call_answered',
-        'timestamp' : event_timestamp,
-        'uuid': headers['variable_vtiger_call_uuid'] || headers['variable_call_uuid'],
-        'number': headers['variable_dialed_user']
-    }
-
-    // Add vtigersignature
-    if (typeof(headers['variable_vtiger_api_key']) !== 'undefined') {
-        let vtiger_api_key_buff = new Buffer.from(headers['variable_vtiger_api_key'], 'base64');
-        requestBody['vtigersignature'] = vtiger_api_key_buff.toString('ascii');
-    }
+    requestBody['callstatus'] = 'call_answered';
+    requestBody['number'] = headers['variable_dialed_user'];
 
     let request_options = {
         'method' : 'POST',
