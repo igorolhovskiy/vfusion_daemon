@@ -12,9 +12,12 @@ let bridge = (headers) => {
     let vtiger_url_buff = new Buffer.from(headers['variable_vtiger_url'], 'base64');
     let vtiger_url = vtiger_url_buff.toString('ascii');
 
+    let event_timestamp = headers['Event-Date-Timestamp'];
+    event_timestamp = event_timestamp.substring(0, event_timestamp.length - 6);
+
     let requestBody = {
         'callstatus' : 'call_answered',
-        'timestamp' : headers['Event-Date-Timestamp'],
+        'timestamp' : event_timestamp,
         'uuid': headers['variable_vtiger_call_uuid'] || headers['variable_call_uuid'],
         'number': headers['variable_dialed_user']
     }
