@@ -15,6 +15,10 @@ let commonBody = (headers) => {
         requestBody['vtigersignature'] = vtiger_api_key_buff.toString('ascii');
     }
 
+    if (typeof(headers['variable_direction']) !== 'undefined') {
+        requestBody['direction'] = headers['variable_direction'];
+    }
+
     return requestBody;
 }
 
