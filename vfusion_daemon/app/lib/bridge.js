@@ -5,8 +5,8 @@ const log = require('../init/logger')(module),
 
 let bridge = (headers) => {
 
-    if (typeof(headers['variable_dialed_user']) == 'undefined') {
-        log("variable_dialed_user is not set!");
+    if (typeof(headers['Other-Leg-Destination-Number']) == 'undefined') {
+        log("Other-Leg-Destination-Number is not set!");
         log(JSON.stringify(headers, null, 2));
         return;
     }
@@ -17,7 +17,7 @@ let bridge = (headers) => {
     let requestBody = commonBody(headers);
 
     requestBody['callstatus'] = 'call_answered';
-    requestBody['number'] = headers['variable_dialed_user'];
+    requestBody['number'] = headers['Other-Leg-Destination-Number'];
 
     let request_options = {
         'method' : 'POST',
