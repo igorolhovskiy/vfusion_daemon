@@ -3,7 +3,6 @@ const freeswitch = require('./init/freeswitch'),
     log = require('./init/logger')(module),
     callRinging = require('./lib/progress'),
     callAnswer = require('./lib/bridge');
-    //callHangup = require('./lib/hangup');
 
 freeswitch
     .on('esl::event::CHANNEL_PROGRESS::*', function(e) {
@@ -20,5 +19,5 @@ freeswitch
         }
         callAnswer(headers);
     });
-    
+
 log('VFusion daemon started');
